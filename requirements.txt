@@ -1,0 +1,4 @@
+cobra>=0.25
+pandas>=1.5
+numpy>=1.21
+matplotlib>=3.5
