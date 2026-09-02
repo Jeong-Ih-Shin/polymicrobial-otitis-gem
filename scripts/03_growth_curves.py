@@ -44,8 +44,8 @@ def main():
 
     fig, axes = plt.subplots(2, 2, figsize=(12, 9))
 
-    for i, env in enumerate(ENVS):
-        for j, pair_name in enumerate(PAIRS):
+    for i, pair_name in enumerate(PAIRS):
+        for j, env in enumerate(ENVS):
             ax = axes[i, j]
             row = df_pair[(df_pair.env == env) & (df_pair.pair == pair_name)]
             if len(row) == 0:
@@ -54,7 +54,7 @@ def main():
             row = row.iloc[0]
 
             # Panel label (A, B, C, D)
-            ax.text(-0.12, 1.08, 'ABCD'[i * 2 + j],
+            ax.text(-0.12, 1.08, 'abcd'[i * 2 + j],
                     transform=ax.transAxes,
                     fontsize=18, fontweight='bold', va='top', ha='left')
 
@@ -107,8 +107,8 @@ def main():
                               ec='#CBD5E1', alpha=0.9))
 
     plt.tight_layout()
-    out_png = FIGS / 'fig_growth_curves.png'
-    out_pdf = FIGS / 'fig_growth_curves.pdf'
+    out_png = FIGS / 'FigureS1.png'
+    out_pdf = FIGS / 'FigureS1.pdf'
     plt.savefig(out_png, dpi=150, bbox_inches='tight')
     plt.savefig(out_pdf, bbox_inches='tight')
     plt.close()

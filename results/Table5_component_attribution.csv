@@ -1,0 +1,15 @@
+Organism pair,Component group,CSOM reference,OE reference,Sufficiency (CSOM + group at OE value),Necessity (OE with group reverted),Interpretation
+C. parapsilosis + P. aeruginosa,Amino acids,Mutualism,Parasitism,Mutualism,Parasitism,No effect
+C. parapsilosis + P. aeruginosa,Ammonium,Mutualism,Parasitism,Mutualism,Parasitism,No effect
+C. parapsilosis + P. aeruginosa,Fermentation products,Mutualism,Parasitism,Mutualism,Parasitism,No effect
+C. parapsilosis + P. aeruginosa,Inorganic iron,Mutualism,Parasitism,Commensalism,Mutualism,Necessary
+C. parapsilosis + P. aeruginosa,Mucin-associated substrates,Mutualism,Parasitism,Mutualism,Parasitism,No effect
+C. parapsilosis + P. aeruginosa,Oxygen,Mutualism,Parasitism,Mutualism,Parasitism,No effect
+C. parapsilosis + P. aeruginosa,Sugars,Mutualism,Parasitism,Mutualism,Parasitism,No effect
+C. parapsilosis + S. aureus,Amino acids,Mutualism,Mutualism,Mutualism,Mutualism,not applicable
+C. parapsilosis + S. aureus,Ammonium,Mutualism,Mutualism,Mutualism,Mutualism,not applicable
+C. parapsilosis + S. aureus,Fermentation products,Mutualism,Mutualism,Mutualism,Mutualism,not applicable
+C. parapsilosis + S. aureus,Inorganic iron,Mutualism,Mutualism,Mutualism,Mutualism,not applicable
+C. parapsilosis + S. aureus,Mucin-associated substrates,Mutualism,Mutualism,Mutualism,Mutualism,not applicable
+C. parapsilosis + S. aureus,Oxygen,Mutualism,Mutualism,Mutualism,Mutualism,not applicable
+C. parapsilosis + S. aureus,Sugars,Mutualism,Mutualism,Mutualism,Mutualism,not applicable

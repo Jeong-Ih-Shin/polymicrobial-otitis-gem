@@ -1,0 +1,5 @@
+Environment,Organism pair,C. parapsilosis solo (h-1),C. parapsilosis joint (h-1),C. parapsilosis boost,Bacterium solo (h-1),Bacterium joint (h-1),Bacterium boost
+CSOM,C. parapsilosis + P. aeruginosa,1.8680,2.4795,1.33x,0.6767,1.0765,1.59x
+CSOM,C. parapsilosis + S. aureus,1.8680,3.2903,1.76x,0.3072,0.4198,1.37x
+OE,C. parapsilosis + P. aeruginosa,1.6706,1.3040,0.78x,0.8483,2.1530,2.54x
+OE,C. parapsilosis + S. aureus,1.6706,2.6156,1.57x,0.2727,0.6742,2.47x

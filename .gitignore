@@ -27,3 +27,4 @@ results/cross_feeding.csv
 .env
 venv/
 .venv/
+figures_archive/

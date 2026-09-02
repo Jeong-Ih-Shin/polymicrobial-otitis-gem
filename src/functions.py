@@ -56,7 +56,7 @@ def change_ids(model):
 
 
 def tune_bac_lumen_rxns(bac_model,calb_model,Metabolite,Reaction,source):
-    #Creates corresponding lumen reactions to prepare the bacterial model to be joined with Candida albicans model
+    #Creates corresponding lumen reactions to prepare the bacterial model to be joined with Candida parapsilosis model
     second_lumen_ext_rxns = list()
     second_lumen_ext_mets = list()
     
@@ -207,7 +207,7 @@ def apply_coupling_constraints(cpx,cplex,source):
     second_forward_vars.append(cpx.variables.get_names(loc_bio_2))
     second_backward_vars.append(cpx.variables.get_names(loc_bio_2))
     
-    #couple the candida albicans reactions to the corresponding biomass reaction 
+    #couple the candida parapsilosis reactions to the corresponding biomass reaction 
     i=0
     while i<len(first_forward_vars)-1:
         
@@ -292,7 +292,7 @@ def pFBA_joint_model(cpx,loc_bio_1,loc_bio_2,cplex,first_forward_vars,first_back
 
 
 def interaction_type(ccf,bcf,math):
-    #Specifies the interaction type between Candida albicans and bacterial species     
+    #Specifies the interaction type between Candida parapsilosis and bacterial species     
     pb = math.log2(1.1)
     ib = math.log2(0.9)
     
