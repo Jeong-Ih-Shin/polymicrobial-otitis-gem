@@ -1,6 +1,6 @@
 # polymicrobial-otitis-gem
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20469574.svg)](https://doi.org/10.5281/zenodo.20469574)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20469573.svg)](https://doi.org/10.5281/zenodo.20469573)
 
 In silico modeling of *Candida parapsilosis* interactions with *Pseudomonas aeruginosa*
 and *Staphylococcus aureus* in chronic otitis environments (CSOM and OE), using
