@@ -70,7 +70,7 @@ for _, row in pair_results.iterrows():
                     (fu_side if cat == 'fungal' else bac_side)[agora] = sol.fluxes[r.id]
                     break
 
-    for met in set(fu_side) | set(bac_side):
+    for met in sorted(set(fu_side) | set(bac_side)):
         ff = fu_side.get(met, 0); bf = bac_side.get(met, 0); sf = sys_side.get(met, 0)
         if abs(ff) < THRESHOLD and abs(bf) < THRESHOLD: continue
         if ff > THRESHOLD and bf < -THRESHOLD: d = 'fungus_to_bac'

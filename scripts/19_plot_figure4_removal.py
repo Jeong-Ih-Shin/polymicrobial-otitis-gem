@@ -44,6 +44,10 @@ COND_COLOR = {
 }
 SHORT = {'CP+PA': 'PA', 'CP+SA': 'SA'}
 
+# 세균별로 묶어 환경 간 비교가 보이도록 한 순서
+ORDER = [('CSOM', 'CP+PA'), ('OE', 'CP+PA'),
+         ('CSOM', 'CP+SA'), ('OE', 'CP+SA')]
+
 
 def main():
     src = RESULTS / 'fungal_activity_budget.csv'
@@ -58,7 +62,10 @@ def main():
 
     # -------------------------------------------------------- panel a
     ax = axes[0]
-    for (env, pair), g in df.groupby(['env', 'pair']):
+    for env, pair in ORDER:
+        g = df[(df.env == env) & (df.pair == pair)]
+        if not len(g):
+            continue
         g = g.sort_values('fungal_activity', ascending=False)
         ax.plot(100 * g.fungal_activity, 100 * g.bac_rel_to_coinfection,
                 color=COND_COLOR.get((env, pair), '#666666'), lw=1.8,
@@ -79,7 +86,10 @@ def main():
     near = df[df.fungal_activity <= 0.20]
     if len(near):
         ins = ax.inset_axes([0.44, 0.18, 0.34, 0.46])
-        for (env, pair), g in near.groupby(['env', 'pair']):
+        for env, pair in ORDER:
+            g = near[(near.env == env) & (near.pair == pair)]
+            if not len(g):
+                continue
             g = g.sort_values('fungal_activity', ascending=False)
             ins.plot(100 * g.fungal_activity, 100 * g.bac_rel_to_coinfection,
                      color=COND_COLOR.get((env, pair), '#666666'), lw=1.4,
@@ -92,22 +102,33 @@ def main():
 
     # -------------------------------------------------------- panel b
     ax = axes[1]
-    elim = (df[np.isclose(df.fungal_activity, 0.0)]
-            .assign(cond=lambda d: d.env + '\n' + d.pair.str.replace('CP+', ''))
-            .sort_values(['env', 'pair']))
-    x = np.arange(len(elim))
+    recs = []
+    for (env, pair), g in df.groupby(['env', 'pair']):
+        g = g.sort_values('fungal_activity', ascending=False)
+        hit = g[g.bac_rel_to_coinfection < 0.999]
+        if not len(hit):
+            continue
+        recs.append(dict(env=env, pair=pair,
+                         cond=env + '\n' + pair.replace('CP+', ''),
+                         thr=100 * hit.iloc[0].fungal_activity))
+    thr_df = (pd.DataFrame(recs)
+              .set_index(['env', 'pair'])
+              .reindex(pd.MultiIndex.from_tuples(ORDER, names=['env', 'pair']))
+              .dropna(subset=['thr'])
+              .reset_index())
+    x = np.arange(len(thr_df))
     cols = [COND_COLOR.get((r.env, r.pair), '#666666')
-            for _, r in elim.iterrows()]
-    vals = 100 * elim.bac_rel_to_coinfection.values
+            for _, r in thr_df.iterrows()]
+    vals = thr_df.thr.values
     ax.bar(x, vals, 0.62, color=cols, edgecolor='white', linewidth=0.6)
     for xi, v in zip(x, vals):
-        ax.text(xi, v + 2, f'{v:.1f}%', ha='center', fontsize=6.4,
+        ax.text(xi, v + 0.6, f'{v:.1f}%', ha='center', fontsize=6.4,
                 fontweight='bold')
-    ax.axhline(100, color='#888888', lw=0.7, ls=':')
     ax.set_xticks(x)
-    ax.set_xticklabels(elim.cond, fontsize=6.2)
-    ax.set_ylim(0, 122)
-    ax.set_ylabel('Predicted bacterial growth\n(% of unsuppressed joint-model value)',
+    ax.set_xticklabels(thr_df.cond, fontsize=6.2)
+    ax.set_ylim(0, max(vals) * 1.25)
+    ax.set_ylabel('Fungal activity at which bacterial growth\n'
+                  'first declines (% of unsuppressed value)',
                   fontsize=7.5)
     ax.tick_params(labelsize=6.5)
     ax.spines[['top', 'right']].set_visible(False)

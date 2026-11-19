@@ -1,0 +1,5 @@
+env,pair,n_fungal_lumen_rxns,bac_A,bac_B,bac_C,pct_B,pct_C,active_exch_A,active_exch_B,total_exch_flux_B
+CSOM,CP+PA,125,1.0765,1.0765,0.6767,100.0,62.9,47,37,648.37
+CSOM,CP+SA,125,0.4198,0.4198,0.3072,100.0,73.2,50,39,315.46
+OE,CP+PA,125,2.153,2.153,0.8483,100.0,39.4,46,41,282.62
+OE,CP+SA,125,0.6742,0.6742,0.2727,100.0,40.4,50,40,157.53

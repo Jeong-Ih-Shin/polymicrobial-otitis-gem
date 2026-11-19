@@ -28,3 +28,4 @@ results/cross_feeding.csv
 venv/
 .venv/
 figures_archive/
+results_before/
