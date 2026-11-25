@@ -9,6 +9,8 @@ from matplotlib.patches import Patch
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT/'src'))
 import style  # noqa: F401
+plt.rcParams.update({'mathtext.fontset': 'custom', 'mathtext.rm': 'Arial',
+                     'mathtext.it': 'Arial:italic', 'mathtext.bf': 'Arial:bold'})
 RESULTS, FIGS = ROOT/'results', ROOT/'figures'
 FIGS.mkdir(exist_ok=True)
 
@@ -65,7 +67,7 @@ for i, env in enumerate(ENVS):
         ax.text(-0.14, 1.06, 'abcd'[i*2+j], transform=ax.transAxes,
                 fontsize=16, fontweight='bold', va='top', ha='left')
         ax.set_title(f'{env}: {pair}', fontsize=12, fontweight='bold')
-        ax.set_xlabel('C. parapsilosis boost factor')
+        ax.set_xlabel(r'$\it{C.\ parapsilosis}$ boost factor')
         ax.set_ylabel('Bacterial boost factor')
         ax.set_xlim(0, xmax); ax.set_ylim(0, ymax)
 
